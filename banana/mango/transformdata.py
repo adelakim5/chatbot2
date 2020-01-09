@@ -20,16 +20,46 @@ class transformData:
                 total = total + question.answer
             data = {
                 "version": "2.0",
-            "template": {
-                "outputs": [
-                {
-                    "simpleText": {
-                    "text": "당신의 우울증 점수는 {} 입니다.".format(str(total))
-                    }
+                "template": {
+                    "outputs":None
                 }
-                ],
             }
-            }
+            if total >= 25:
+                outputs =  [
+                        {
+                            "simpleText": {
+                                "text": "당신의 우울증 점수는 {} 입니다.".format(str(total))
+                            }
+                        },{
+                            "simpleText": {
+                                "text": "ㅠㅠ 많이 우울하신가요? 우울증이 의심돼요"
+                            }
+                        },{
+                            "simpleText": {
+                                "text": "전문가와 상담이 필요해보여요.."
+                            }
+                        }
+                    ]
+                data["template"]["outputs"] = outputs
+            else:
+                outputs =  [
+                        {
+                            "simpleText": {
+                                "text": "당신의 우울증 점수는 {} 입니다.".format(str(total))
+                            }
+                        },{
+                            "simpleText": {
+                                "text": "음.. 심각한 정도까지는 아닌것 같아요"
+                            }
+                        },{
+                            "simpleText": {
+                                "text": "하지만 만약 우울한 기분이 계속된다면 전문가를 만나보는걸 추천해요!"
+                            }
+                        }
+                    ]
+                data["template"]["outputs"] = outputs
+                
+                
         else:
             data = {
                 "version": "2.0",

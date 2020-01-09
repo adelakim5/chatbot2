@@ -1,4 +1,5 @@
 import json
+from .shared import BLOCK_ID
 
 class responseData:
     def __init__(self, userRequest):
@@ -15,6 +16,10 @@ class responseData:
     
     def getUserId(self):
         return self.received_json_data['userRequest']['user']['id']
+    
+    def getPreBlockIndex(self):
+        self.block_index = BLOCK_ID.index(self.getBlockId())
+        return self.block_index - 4
     
     def getContext(self):
         if 'contexts' in self.received_json_data:

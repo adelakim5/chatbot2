@@ -31,7 +31,6 @@ def hello(request):
         if user is None:
             user = User(user=user_id)
             user.save()
-            
         post = Question(question='질문{}'.format(preBlock), answer=answer, userId=user)
         post.save()
         data = transformData(block_id,user).getJsonData()

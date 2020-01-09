@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from .models import *
 from django.views.decorators.csrf import csrf_exempt
 from .mango.transformdata import transformData
-from .mango.responseData import responseData
+from .mango.requestData import requestData
 from .mango.shared import BLOCK_ID
 
 ## Serializers
@@ -15,7 +15,7 @@ ANSWER = ["극히 드물다","가끔 있었다","종종 있었다","대부분 �
 
 @csrf_exempt
 def hello(request):
-    rData = responseData(request)
+    rData = requestData(request)
     block_id = rData.getBlockId()
     print(block_id)
     utterance = rData.getUtterance()
@@ -42,9 +42,9 @@ def hello(request):
             
         post = Question(question='질문{}'.format(preBlock), answer=answer, userId=user)
         post.save()
-        data = transformData(block_id).getJsonData() 
+        data = transformData(block_id,user).getJsonData()
     else:
-        data = transformData(block_id).getJsonDump()
+        data = transformData(block_id,user).getJsonDump()
     return data
     
 

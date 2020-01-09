@@ -1,7 +1,7 @@
 import json
 from .shared import BLOCK_ID
 
-class responseData:
+class requestData:
     def __init__(self, userRequest):
         self.received_json_data = json.loads(userRequest.body.decode("utf-8"))
         

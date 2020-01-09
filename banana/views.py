@@ -36,7 +36,7 @@ def hello(request):
     if(ANSWER.__contains__(utterance)):
         user = User(user=user_id)
         user.save()
-        post = Question(question=block_name, answer=answer, userId=user_id)
+        post = Question(question=block_name, answer=answer, userId=user)
         post.save()
         data = transformData(block_id).getJsonData() 
     else:

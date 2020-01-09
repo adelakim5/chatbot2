@@ -1,4 +1,5 @@
 from django.http import JsonResponse
+from ..models import Question
 from .shared import QUESTION, BLOCK_ID
 class transformData:
     def __init__(self,blockId , user):
@@ -14,7 +15,7 @@ class transformData:
     def getJsonData(self):
         if self.block_index - 4 == 20:
             total = 0
-            questions = Qusetion.objects.all().filter(userId=user)
+            questions = Question.objects.all().filter(userId=user)
             for question in questions:
                 total = total + question.answer
             data = {

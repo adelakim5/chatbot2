@@ -31,8 +31,9 @@ def hello(request):
         if user is None:
             user = User(user=user_id)
             user.save()
-        question = Question.objects.all().filter(userId=user).get(question='질문{}'.format(preBlock))
+        question = Question.objects.all().filter(userId=user)
         if question:
+            question.get(question='질문{}'.format(preBlock))
             question.answer = answer
             question.save()
         else:

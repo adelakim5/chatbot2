@@ -28,6 +28,7 @@ class transformData:
                 }
                 ],
             }
+            }
         else:
             data = {
                 "version": "2.0",

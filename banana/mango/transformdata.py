@@ -15,7 +15,7 @@ class transformData:
     def getJsonData(self):
         if self.block_index - 4 == 20:
             total = 0
-            questions = Question.objects.all().filter(userId=user)
+            questions = Question.objects.all().filter(userId=self.user)
             for question in questions:
                 total = total + question.answer
             data = {

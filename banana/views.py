@@ -20,15 +20,7 @@ def hello(request):
     print(block_id)
     utterance = rData.getUtterance()
     print(utterance)
-    answer = 0
-    if(utterance==ANSWER[0]):
-        answer = 0
-    elif(utterance==ANSWER[1]):
-        answer = 1
-    elif(utterance==ANSWER[2]):
-        answer = 2
-    elif(utterance==ANSWER[3]):
-        answer = 3 
+    answer = reverseQ(rData.getPreBlockIndex())
     block_name = rData.getBlockName()
     preBlock = str(rData.getPreBlockIndex())
     print(block_name)
@@ -46,6 +38,31 @@ def hello(request):
     else:
         data = transformData(block_id,user).getJsonDump()
     return data
+
+def reverseQ(block_index):
+    answer = 0
+    if block_index == 5 or block_index == 10 or block_index == 15 :
+        if(utterance==ANSWER[0]):
+            answer = 3
+        elif(utterance==ANSWER[1]):
+            answer = 2
+        elif(utterance==ANSWER[2]):
+            answer = 1
+        elif(utterance==ANSWER[3]):
+            answer = 0
+    else:
+        if(utterance==ANSWER[0]):
+            answer = 0
+        elif(utterance==ANSWER[1]):
+            answer = 1
+        elif(utterance==ANSWER[2]):
+            answer = 2
+        elif(utterance==ANSWER[3]):
+            answer = 3
+    return answer
+        
+    
+    
     
 
 # Create your views he`re.

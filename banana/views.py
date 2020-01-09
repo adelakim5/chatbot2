@@ -31,8 +31,13 @@ def hello(request):
         if user is None:
             user = User(user=user_id)
             user.save()
-        post = Question(question='질문{}'.format(preBlock), answer=answer, userId=user)
-        post.save()
+        question = Question.objects.all().filter(userId=user).get(question='질문{}'.format(preBlock))
+        if question:
+            question.answer = answer
+            question.save()
+        else:
+            question = Question(question='질문{}'.format(preBlock), answer=answer, userId=user)
+            question.save()
         data = transformData(block_id,user).getJsonData()
     else:
         data = transformData(block_id,user).getJsonDump()
@@ -68,4 +73,3 @@ def reverseQ(block_index, utterance):
 # class PostViewSet(viewsets.ModelViewSet):
 #     queryset = Post.objects.all()
 #     serializer_class = PostSerializer
-

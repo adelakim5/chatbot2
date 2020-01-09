@@ -18,7 +18,7 @@ class transformData:
             questions = Question.objects.all().filter(userId=self.user)
             for question in questions:
                 total = total + question.answer
-                question.delete() # 사용자 답변 삭제(중복 계산 방지)
+            
             data = {
                 "version": "2.0",
                 "template": {

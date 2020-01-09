@@ -34,8 +34,13 @@ def hello(request):
     user_id = rData.getUserId()
     print(user_id)
     if(ANSWER.__contains__(utterance)):
-        user = User(user=user_id)
-        user.save()
+        # 내가 현재 가지고 있는 값. => USER_ID 내가 구해야하는 값 
+        # => 유저가 있는지 없는지 => MODEL:USER => USER_ID 있는지 없는지 확인
+        user = User.objects.get(user=user_id)
+        if user is None:
+            user = User(user=user_id)
+            user.save()
+            
         post = Question(question=block_name, answer=answer, userId=user)
         post.save()
         data = transformData(block_id).getJsonData() 

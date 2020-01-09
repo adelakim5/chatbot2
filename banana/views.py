@@ -31,11 +31,10 @@ def hello(request):
         if user is None:
             user = User(user=user_id)
             user.save()
-        question = Question.objects.all().filter(userId=user)
+        question = Question.objects.all().filter(userId=user).filter(question='질문{}'.format(preBlock))
         if question:
-            question.get(question='질문{}'.format(preBlock))
-            question.answer = answer
-            question.save()
+            question[0].answer = answer
+            question[0].save()
         else:
             question = Question(question='질문{}'.format(preBlock), answer=answer, userId=user)
             question.save()

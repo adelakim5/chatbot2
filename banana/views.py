@@ -20,7 +20,7 @@ def hello(request):
     print(block_id)
     utterance = rData.getUtterance()
     print(utterance)
-    answer = reverseQ(rData.getPreBlockIndex())
+    answer = reverseQ(rData.getPreBlockIndex(), utterance)
     block_name = rData.getBlockName()
     preBlock = str(rData.getPreBlockIndex())
     print(block_name)
@@ -39,7 +39,7 @@ def hello(request):
         data = transformData(block_id,user).getJsonDump()
     return data
 
-def reverseQ(block_index):
+def reverseQ(block_index, utterance):
     answer = 0
     if block_index == 5 or block_index == 10 or block_index == 15 :
         if(utterance==ANSWER[0]):

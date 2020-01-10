@@ -28,7 +28,7 @@ def hello(request):
     print(user_id)
     if(ANSWER.__contains__(utterance)):
         userList = User.objects.all().filter(user=user_id)
-        if user:
+        if userList:
             user = userList[0]
         else:
             user = User(user=user_id)

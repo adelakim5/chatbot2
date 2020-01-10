@@ -1,8 +1,10 @@
 from django.http import JsonResponse
 from ..models import Question
 from .shared import QUESTION, BLOCK_ID
+
+# 챗봇에 들어갈 응답 
 class transformData:
-    def __init__(self,blockId , user):
+    def __init__(self,blockId , user): # 초기화 
         self.blockId = blockId
         self.user = user
         self.block_index = BLOCK_ID.index(blockId) ## 2

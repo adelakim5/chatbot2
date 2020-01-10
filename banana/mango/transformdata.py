@@ -24,9 +24,17 @@ class transformData:
             data = {
                 "version": "2.0",
                 "template": {
-                    "outputs":None
+                    "outputs":None,
+                     "quickReplies": [
+                    {
+                        "messageText": "응 알겠어",
+                        "action": "message",
+                        "label": "응 알겠어"
+                    }
+                     ]
                 }
             }
+            
             if total >= 25:
                 outputs =  [
                         {

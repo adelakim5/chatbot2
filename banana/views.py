@@ -27,10 +27,10 @@ def hello(request):
     user_id = rData.getUserId()
     print(user_id)
     if(ANSWER.__contains__(utterance)):
-        user = User.objects.get(user=user_id)
+        user = User.objects.all().filter(user=user_id)
         if user is None:
-            user = User(user=user_id)
-            user.save()
+            user[0].user = user_id
+            user[0].save()
         question = Question.objects.all().filter(userId=user).filter(question='질문{}'.format(preBlock))
         if question:
             question[0].answer = answer

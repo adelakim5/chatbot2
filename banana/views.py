@@ -11,7 +11,7 @@ from .mango.shared import BLOCK_ID
 ## Serializers
 # from .serializers import PostSerializer
 
-ANSWER = ["극히 드물다","가끔 있었다","종종 있었다","대부분 그랬다","우울증 자가진단 시작하기"]
+ANSWER = ["극히 드물어","가끔 1~2번","종종 3~4번정도","대부분 그랬어","우울증 자가진단 시작하기"]
 
 @csrf_exempt
 def hello(request):
@@ -27,10 +27,10 @@ def hello(request):
     user_id = rData.getUserId()
     print(user_id)
     if(ANSWER.__contains__(utterance)):
-        user = User.objects.all().filter(user=user_id)
+        user = User.objects.get(user=user_id)
         if user is None:
-            user[0].user = user_id
-            user[0].save()
+            user = User(user=user_id)
+            user.save()
         question = Question.objects.all().filter(userId=user).filter(question='질문{}'.format(preBlock))
         if question:
             question[0].answer = answer

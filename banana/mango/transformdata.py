@@ -39,7 +39,7 @@ class transformData:
                 outputs =  [
                         {
                             "simpleText": {
-                                "text": "당신의 우울증 점수는 {} 입니다.".format(str(total))
+                                "text": "우울증 점수는.. {}점 이네요".format(str(total))
                             }
                         },{
                             "simpleText": {
@@ -56,7 +56,7 @@ class transformData:
                 outputs =  [
                         {
                             "simpleText": {
-                                "text": "당신의 우울증 점수는 {} 입니다.".format(str(total))
+                                "text": "우울증 점수는.. {}점 이네요".format(str(total))
                             }
                         },{
                             "simpleText": {
@@ -84,28 +84,28 @@ class transformData:
                     ],
                     "quickReplies": [
                     {
-                        "messageText": "극히 드물다",
+                        "messageText": "극히 드물어",
                         "action": "block",
                         "blockId": self.nextBlockId,
-                        "label": "극히 드물다"
+                        "label": "극히 드물어"
                     },
                     {
-                        "messageText": "가끔 있었다",
+                        "messageText": "가끔 1~2번",
                         "action": "block",
                         "blockId": self.nextBlockId,
-                        "label": "가끔 있었다"
+                        "label": "가끔 1~2번"
                     },
                     {
-                        "messageText": "종종 있었다",
+                        "messageText": "종종 3~4번정도",
                         "action": "block",
                         "blockId": self.nextBlockId,
-                        "label": "종종 있었다"
+                        "label": "종종 3~4번정도"
                     },
                     {
-                        "messageText": "대부분 그랬다",
+                        "messageText": "대부분 그랬어",
                         "action": "block",
                         "blockId": self.nextBlockId,
-                        "label": "대부분 그랬다"
+                        "label": "대부분 그랬어"
                     }
                     ]
                 }

@@ -15,6 +15,8 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+CORS_ORIGIN_ALLOW_ALL=True
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -36,11 +38,21 @@ INSTALLED_APPS = [
     'banana.apps.BananaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
+    
+    # allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    #provider
+    'allauth.socialaccount.providers.kakao',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'testAPIServer.urls'
@@ -108,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'ko'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Seoul'
 
@@ -129,6 +142,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
    os.path.join(BASE_DIR, 'banana','static')
 ]
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+)
+
+SITE_ID = 1
+SOCIALACCOUNT_EMAIL_VERIFICATION = 'none'
+
+# django-allauth setting
+LOGIN_REDIRECT_URL = '/'
+
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url

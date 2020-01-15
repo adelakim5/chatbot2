@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification</title>
+</head>
+
+<body>
+    <h3>
+        verification page
+        {% if messages %}
+        {% for mes in messages %}
+        {{ mes.tag }}
+        {{ mes.message }}
+        {% endfor %}
+        {% endif %}
+
+    </h3>
+    <form action="{% url 'verification' %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="useranme" placeholder="카카오 프로필이름">
+        <input type="email" name="email" id="" placeholder="카카오 가입 email주소">
+        <input type="submit" name="ok" value="인증하기">
+    </form>
+</body>
+
+</html>

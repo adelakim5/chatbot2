@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary</title>
+</head>
+
+<body>
+    {% if error %}
+    {{ error }}
+    {% endif %}
+
+    <form action="{% url 'diary'%}" method="POST">
+        {% csrf_token %}
+        <label for="title">제목</label>
+        <input type="text" name="title" id="" placeholder="title">
+        <br>
+        <label for="date">날짜</label>
+        <input type="date" name="date" id="">
+        <br>
+        <label for="emotion">감정</label>
+        <select name="emotion" id="emotion">
+            <option value="emotion">기쁨</option>
+            <option value="emotion">혐오</option>
+            <option value="emotion">두려움</option>
+            <option value="emotion">분노</option>
+            <option value="emotion">슬픔</option>
+            <option value="emotion">기타</option>
+        </select>
+        <input type="text" name="other" id="other" value="기타 감정을 적어주세요.">
+        <label for="score">감정점수</label>
+        <input type="text" name="score" id="">
+        <br>
+        <label for="detail">detail</label>
+        <br>
+        <textarea name="detail" id="" cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit" name="submit" value="submit">
+    </form>
+
+    <a href="{% url 'home' %}">home</a>
+</body>
+
+</html>

@@ -8,5 +8,13 @@ from . import views
 
 urlpatterns = [
     # path('', include(router.urls)),
-    path('hello',views.hello, name="hello")
+    path('hello',views.hello, name="hello"),
+    path('', views.home, name="home"),
+    path('signup', views.signup, name="signup"),
+    path('logout', views.logout, name="logout"),
+    path('reserve', views.reserve, name="reserve"),
+    path('diary', views.diary, name="diary"),
+    path('accounts/', include('allauth.urls')),
+    path('oauth/', views.oauth, name="oauth"),
+    path('verification', views.verification, name="verification"),
 ] 

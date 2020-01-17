@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 class User_Chat(models.Model):
     user = models.CharField(max_length=100)
     total = models.IntegerField(null=True, blank=True)
+    userId = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     
 class Question(models.Model):
     question = models.CharField(max_length=100)
@@ -47,15 +48,26 @@ class Additional(models.Model):
         ('graduate', '대학원 졸업 이상'),
         ('others', '기타'),
     ]
+    PARENT=[
+        ('이혼', '이혼'),
+        ('별거', '별거'),
+        ('사망', '사망'),
+        ('해당없음', '해당없음'),
+        ('기타', '기타'),
+    ]
+    RADIO=[
+        ('yes', 'yes'),
+        ('no', 'yes'),
+    ]
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     school = models.CharField(max_length=10, choices=SCHOOL, default='elementary', null=True, blank=True)
     school_others = models.CharField(max_length=100, null=True, blank=True)
     age = models.IntegerField(null=True, blank=True)
-    parent = models.CharField(max_length=2, null=True, blank=True)
+    parent = models.CharField(max_length=10, choices=PARENT, null=True, blank=True)
     reason = models.CharField(max_length=100, null=True, blank=True)
     sibling = models.CharField(max_length=10, null=True, blank=True)
-    marriage = models.CharField(max_length=3, null=True, blank=True)
-    child = models.CharField(max_length=3, null=True, blank=True)
+    marriage = models.CharField(max_length=3, choices=RADIO, null=True, blank=True)
+    child = models.CharField(max_length=3, choices=RADIO, null=True, blank=True)
     child_num = models.CharField(max_length=10, null=True, default='0')
     
     

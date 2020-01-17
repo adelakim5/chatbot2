@@ -29,6 +29,7 @@ def hello(request):
     block_name = rData.getBlockName()
     preBlock = str(rData.getPreBlockIndex())
     user_id = rData.getUserId()
+    print(str(user_id))
     
     if(ANSWER.__contains__(utterance)):
         userList = User_Chat.objects.all().filter(user=user_id)

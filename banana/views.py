@@ -77,7 +77,8 @@ def home(request):
     if userList:
         author = userList[0]
         diarys = Diary.objects.all().filter(author=author)
-        return render(request, 'home.html', {'diarys':diarys}) 
+        if diarys:
+            return render(request, 'home.html', {'diarys':diarys}) 
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']

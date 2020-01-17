@@ -61,7 +61,7 @@ class Additional(models.Model):
     sibling = models.CharField(max_length=10, null=True, blank=True)
     marriage = models.CharField(max_length=3, choices=RADIO, null=True, blank=True)
     child = models.CharField(max_length=3, choices=RADIO, null=True, blank=True)
-    child_num = models.CharField(max_length=10, null=True, default='0')
+    child_num = models.CharField(max_length=10, null=True, blank=True, default='0')
     
     
 class Diary(models.Model):

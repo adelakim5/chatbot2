@@ -164,7 +164,9 @@ def socialLogin(request):
 
 def oauth(request):           
     code = request.GET['code']
+    print(str(code))
     client_id = request.session.get('client_id')
+    print(str(client_id))
     redirect_uri = request.session.get('redirect_uri')
     access_token_request_uri = "https://kauth.kakao.com/oauth/token?grant_type=authorization_code&"
     access_token_request_uri += "client_id=" + client_id

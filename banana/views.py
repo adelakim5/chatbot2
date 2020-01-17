@@ -24,15 +24,12 @@ ANSWER = ["극히 드물어","가끔 1~2번","종종 3~4번정도","대부분 �
 def hello(request):
     rData = requestData(request)
     block_id = rData.getBlockId()
-    print(block_id)
     utterance = rData.getUtterance()
-    print(utterance)
     answer = reverseQ(rData.getPreBlockIndex(), utterance)
     block_name = rData.getBlockName()
     preBlock = str(rData.getPreBlockIndex())
-    print(block_name)
     user_id = rData.getUserId()
-    print(user_id)
+    
     if(ANSWER.__contains__(utterance)):
         userList = User_Chat.objects.all().filter(user=user_id)
         if userList:

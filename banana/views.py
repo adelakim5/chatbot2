@@ -152,7 +152,7 @@ def reserve(request):
 
 def socialLogin(request):
    login_request_uri = 'https://kauth.kakao.com/oauth/authorize?'
-   client_id = '734408998612482f00ad4096fda15b12'
+   client_id = '78acae61f65d913e9dda7218f711e511'
    redirect_uri = '%s/accounts/oauth' % isLocal
    login_request_uri += 'client_id=' + client_id
    login_request_uri += '&redirect_uri=' + redirect_uri

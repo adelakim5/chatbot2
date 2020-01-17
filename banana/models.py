@@ -53,15 +53,15 @@ class Additional(models.Model):
         ('no', 'yes'),
     ]
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    school = models.CharField(max_length=10, choices=SCHOOL, default='elementary', null=True, blank=True)
+    school = models.CharField(max_length=20, choices=SCHOOL, default='elementary', null=True, blank=True)
     school_others = models.CharField(max_length=100, null=True, blank=True)
     age = models.IntegerField(null=True, blank=True)
-    parent = models.CharField(max_length=10, null=True, blank=True)
+    parent = models.CharField(max_length=20, null=True, blank=True)
     reason = models.CharField(max_length=100, null=True, blank=True)
-    sibling = models.CharField(max_length=10, null=True, blank=True)
+    sibling = models.CharField(max_length=20, null=True, blank=True)
     marriage = models.CharField(max_length=3, choices=RADIO, null=True, blank=True)
     child = models.CharField(max_length=3, choices=RADIO, null=True, blank=True)
-    child_num = models.CharField(max_length=10, null=True, blank=True, default='0')
+    child_num = models.CharField(max_length=20, null=True, blank=True, default='0')
     
     
 class Diary(models.Model):

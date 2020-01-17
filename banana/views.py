@@ -9,6 +9,9 @@ from django.views.decorators.csrf import csrf_exempt
 from .mango.transformdata import transformData
 from .mango.requestData import requestData
 from .mango.shared import BLOCK_ID
+from myurl import Url
+
+isLocal = Url(False).getUrl()
 
 ## Serializers
 # from .serializers import PostSerializer
@@ -153,7 +156,7 @@ def reserve(request):
 def socialLogin(request):
    login_request_uri = 'https://kauth.kakao.com/oauth/authorize?'
    client_id = '734408998612482f00ad4096fda15b12'
-   redirect_uri = 'http://localhost:8000/accounts/oauth'
+   redirect_uri = '%s/accounts/oauth' % isLocal
    login_request_uri += 'client_id=' + client_id
    login_request_uri += '&redirect_uri=' + redirect_uri
    login_request_uri += '&response_type=code'
@@ -163,19 +166,12 @@ def socialLogin(request):
 
 def oauth(request):           
     code = request.GET['code']
-    print('code = '+ str(code))
-    
     client_id = request.session.get('client_id')
     redirect_uri = request.session.get('redirect_uri')
-
     access_token_request_uri = "https://kauth.kakao.com/oauth/token?grant_type=authorization_code&"
- 
     access_token_request_uri += "client_id=" + client_id
     access_token_request_uri += "&redirect_uri=" + redirect_uri
     access_token_request_uri += "&code=" + code
- 
-    print(access_token_request_uri)
-    
     return redirect('home')
 
 def verification(request):
